@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import br.com.sgci.model.enums.EstadoCivil;
 import br.com.sgci.model.enums.TipoPessoa;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,9 +28,10 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_PESSOA")
-	private Integer id;
+	private Long id;
 	
-	@ManyToOne
+	@NotNull
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn( name = "ID_ENDERECO")
 	private Endereco endereco;
 	
@@ -73,6 +75,77 @@ public class Pessoa implements Serializable {
 		this.tipo = tipo;
 		this.documento = documento;
 		this.profissao = profissao;
+		this.estadoCivil = estadoCivil;
+	}
+
+	
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public TipoPessoa getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(TipoPessoa tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getDocumento() {
+		return documento;
+	}
+
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+
+	public String getProfissao() {
+		return profissao;
+	}
+
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+
+
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
+	}
+
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
 	}
 
