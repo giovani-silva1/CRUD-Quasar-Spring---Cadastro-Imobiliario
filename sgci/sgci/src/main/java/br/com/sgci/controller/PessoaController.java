@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sgci.controller.dto.PessoaFilterDTO;
 import br.com.sgci.controller.dto.PessoaReqDTO;
 import br.com.sgci.controller.dto.PessoaResponseDTO;
 import br.com.sgci.controller.dto.PessoaUpdDTO;
+import br.com.sgci.controller.dto.ResponsePagedCommomDTO;
 import br.com.sgci.model.Pessoa;
 import br.com.sgci.service.PessoaService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -42,8 +44,8 @@ public class PessoaController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<PessoaResponseDTO>> findAll(){
-		return ResponseEntity.ok(pessoaService.findAll());
+	public ResponseEntity<ResponsePagedCommomDTO<PessoaResponseDTO>> findAll(@Valid PessoaFilterDTO filtros){
+		return ResponseEntity.ok(pessoaService.findAll(filtros));
 	}
 	
 	@PutMapping(value = "/{id}")
