@@ -18,8 +18,10 @@ import br.com.sgci.controller.dto.PessoaResponseDTO;
 import br.com.sgci.controller.dto.PessoaUpdDTO;
 import br.com.sgci.model.Pessoa;
 import br.com.sgci.service.PessoaService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name="Pessoa::Pessoa")
 @RestController
 @RequestMapping(value = "/pessoas")
 public class PessoaController {
